@@ -1,7 +1,5 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
-
 
 // Initialize Firebase
 const app = initializeApp({
@@ -19,6 +17,4 @@ provider.setCustomParameters({
   hd: 'sios.com',
 });
 
-const db = getFirestore(app);
-
-export { auth, db, provider };
+export { auth, provider };

@@ -1,12 +1,13 @@
-import { Outlet, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
+import { TopPage } from '@/pages/TopPage';
+import { ParentLayout } from '@/pages/layout/ParentLayout';
 
 export const RouterConfig = () => {
   return (
     <Routes>
-      <Route path="/" element={<Outlet />}>
-        <Route path="page1" element={<div>Page 1</div>} />
-        <Route path="page2" element={<div>Page 2</div>} />
+      <Route path="/" element={<ParentLayout />}>
+        <Route index element={<TopPage />} />
       </Route>
     </Routes>
   );

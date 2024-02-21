@@ -9,4 +9,13 @@ export default defineConfig({
       '@/': `${__dirname}/src/`, // path.join(__dirname, "src/") でも可
     },
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: false,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
 });
