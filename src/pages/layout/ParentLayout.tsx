@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { AxiosConfig } from '@/utilities/AxiosConfig';
 import { ErrorBoundaryComponent } from '@/utilities/ErrorBoundary';
 import { FirebaseInit } from '@/utilities/FirebaseInit';
-import { SWRConfigComponent } from '@/utilities/SwrConfig';
+import { NetworkStatusConfig } from '@/utilities/NetworkStatusConfig';
 
 export const ParentLayout = () => {
   return (
@@ -11,13 +11,13 @@ export const ParentLayout = () => {
       <section>
         <main>
           <ErrorBoundaryComponent>
-            <FirebaseInit>
-              <SWRConfigComponent>
+            <NetworkStatusConfig>
+              <FirebaseInit>
                 <AxiosConfig>
                   <Outlet />
                 </AxiosConfig>
-              </SWRConfigComponent>
-            </FirebaseInit>
+              </FirebaseInit>
+            </NetworkStatusConfig>
           </ErrorBoundaryComponent>
         </main>
       </section>

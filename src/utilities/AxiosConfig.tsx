@@ -38,6 +38,8 @@ export const AxiosConfig = (props: Props) => {
         return response;
       },
       (error: AxiosError) => {
+        console.error('error');
+
         showBoundary(error);
         return Promise.reject(error);
       },

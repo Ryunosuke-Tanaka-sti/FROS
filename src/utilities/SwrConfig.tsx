@@ -13,6 +13,8 @@ export const SWRConfigComponent = (props: Props) => {
     <SWRConfig
       value={{
         onError(err) {
+          console.log('err come on');
+
           showBoundary(err);
         },
       }}

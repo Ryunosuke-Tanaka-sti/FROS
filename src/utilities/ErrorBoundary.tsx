@@ -1,4 +1,6 @@
-import { ErrorBoundary, FallbackProps } from "react-error-boundary";
+import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
+
+import { NetWorkError } from './Error/NetworkError';
 
 type Props = {
   children: React.ReactNode;
@@ -6,13 +8,11 @@ type Props = {
 export const ErrorBoundaryComponent = (props: Props) => {
   const { children } = props;
 
-  return (
-    <ErrorBoundary FallbackComponent={ErrorFallback}>{children}</ErrorBoundary>
-  );
+  return <ErrorBoundary FallbackComponent={ErrorFallback}>{children}</ErrorBoundary>;
 };
 
 const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
-  console.error(error);
+  if (error instanceof NetWorkError) return <div>ネットワークエラー</div>;
   return (
     <>
       <button className="" onClick={resetErrorBoundary}>

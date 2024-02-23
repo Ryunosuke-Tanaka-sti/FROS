@@ -1,9 +1,10 @@
 import { useAuthAction } from '@/hooks/useAuth';
-import { axiosClient } from '@/utilities/AxiosConfig';
 
 export const TopPage = () => {
   const { signInAction, singOutAction } = useAuthAction();
-  axiosClient.post('/api');
+  // const { data, error, isLoading } = useSWR('users/me', () => axiosClient.get('/api/users/me'));
+  // if (isLoading) return <div>loading</div>;
+  // axiosClient.get('/api/users/me');
 
   return (
     <div className="bg-white">
