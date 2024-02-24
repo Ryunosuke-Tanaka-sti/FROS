@@ -5,6 +5,7 @@ import {
   deleteUtilitiesData,
   fetchIndividualUtilityData,
   fetchUtilitiesAllData,
+  updateUtilitiesData,
 } from '@/api/Utilities';
 import { utilitiesDataType } from '@/types/utilitiesData.type';
 
@@ -28,7 +29,7 @@ export const useUtilitiesDataSL = () => {
   };
 
   const updateDataSL = async (request: utilitiesDataType) => {
-    await createUtilitiesData('sl', request);
+    await updateUtilitiesData('sl', request);
   };
 
   const deleteDataSL = async (uid: string) => {
@@ -57,7 +58,7 @@ export const useUtilitiesDataSkill = () => {
   };
 
   const updateDataSkill = async (request: utilitiesDataType) => {
-    await createUtilitiesData('skill', request);
+    await updateUtilitiesData('skill', request);
   };
   const deleteDataSkill = async (uid: string) => {
     await deleteUtilitiesData('skill', uid);
@@ -84,7 +85,7 @@ export const useUtilitiesDataQualification = () => {
     await createUtilitiesData('qualification', { displayName });
   };
   const updateDataQualification = async (request: utilitiesDataType) => {
-    await createUtilitiesData('qualification', request);
+    await updateUtilitiesData('qualification', request);
   };
   const deleteDataQualification = async (uid: string) => {
     await deleteUtilitiesData('qualification', uid);
