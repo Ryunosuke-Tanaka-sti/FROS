@@ -2,7 +2,7 @@ import { ButtonColorStyles } from '@/constant/ButtonColor';
 
 type ButtonProps = {
   text: string;
-  onClick: () => void;
+  onClick?: () => void;
   type?: 'button' | 'submit';
   color?: keyof typeof ButtonColorStyles;
 };
