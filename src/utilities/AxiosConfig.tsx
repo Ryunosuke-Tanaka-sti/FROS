@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useErrorBoundary } from 'react-error-boundary';
+import { useNavigate } from 'react-router-dom';
 
 import axios, { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 
@@ -24,10 +25,13 @@ export const AxiosConfig = (props: Props) => {
   const { idToken } = useAuthenticated();
   const [isTokenSet, setIsTokenSet] = useState<boolean>(false);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     const requestInterceptor = axiosClient.interceptors.request.use(
       (config: InternalAxiosRequestConfig) => {
         config.headers['google-certification'] = `${idToken}`;
+        console.log(idToken);
 
         return config;
       },
@@ -38,8 +42,12 @@ export const AxiosConfig = (props: Props) => {
         return response;
       },
       (error: AxiosError) => {
-        console.error('error');
-
+        if (error.response && error.config) {
+          const status = error.response.status;
+          const targetURL = error.config.url;
+          // 404の場合は新規登録画面に遷移
+          if (targetURL && targetURL.includes('users/me') && status == 404) return navigate('/new');
+        }
         showBoundary(error);
         return Promise.reject(error);
       },
@@ -50,7 +58,7 @@ export const AxiosConfig = (props: Props) => {
       axiosClient.interceptors.response.eject(responseInterceptor);
       axiosClient.interceptors.request.eject(requestInterceptor);
     };
-  }, [idToken]);
+  }, [idToken, navigate]);
 
   if (!isTokenSet) return <div>loading</div>;
   return <>{children}</>;

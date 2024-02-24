@@ -17,7 +17,7 @@ export const FirebaseInit = (props: Props) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (getAuthUser: User | null) => {
-      console.log('getAuthUser', getAuthUser);
+      // console.log('getAuthUser', getAuthUser);
 
       if (!getAuthUser) return signInAction();
       setLoading(false);
