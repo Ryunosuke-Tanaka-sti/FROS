@@ -3,7 +3,7 @@ export type UserDataType = {
   personalInfo: UserPersonalInfoType;
   skills: UserSkillDataType[];
   qualification: UserQualificationDataType[];
-  manager: string[];
+  manager: UserManagerDataType[];
 };
 
 export type UserPersonalInfoType = {
@@ -13,10 +13,17 @@ export type UserPersonalInfoType = {
 };
 
 export type UserSkillDataType = {
-  id: string;
+  uid: string;
+  displayName: string;
   level: 0 | 1 | 2 | 3 | 4 | 5;
 };
 export type UserQualificationDataType = {
-  id: string;
+  uid: string;
+  displayName: string;
   expiryDate?: Date;
+};
+
+export type UserManagerDataType = {
+  uid: string;
+  displayName: string;
 };

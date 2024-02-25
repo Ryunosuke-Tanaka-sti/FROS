@@ -8,20 +8,16 @@ export const SkillIndexPage = () => {
     isLoadingUtilitiesDataSkill,
     createDataSkill,
     deleteDataSkill,
-    mutateSkill,
     updateDataSkill,
   } = useUtilitiesDataSkill();
   const onCreateSubmit = async (data: { displayName: string }) => {
     await createDataSkill(data.displayName);
-    mutateSkill();
   };
   const onUpdateSubmit = async (uid: string, displayName: string) => {
     await updateDataSkill({ uid, displayName });
-    mutateSkill();
   };
   const onDeleteSubmit = async (uid: string) => {
     await deleteDataSkill(uid);
-    mutateSkill();
   };
 
   if (!utilitiesDataSkill || isLoadingUtilitiesDataSkill) return <h1>Loading...</h1>;

@@ -26,14 +26,17 @@ export const useUtilitiesDataSL = () => {
 
   const createDataSL = async (displayName: string) => {
     await createUtilitiesData('sl', { displayName });
+    mutateSL();
   };
 
   const updateDataSL = async (request: utilitiesDataType) => {
     await updateUtilitiesData('sl', request);
+    mutateSL();
   };
 
   const deleteDataSL = async (uid: string) => {
     await deleteUtilitiesData('sl', uid);
+    mutateSL();
   };
 
   return {
@@ -55,13 +58,16 @@ export const useUtilitiesDataSkill = () => {
 
   const createDataSkill = async (displayName: string) => {
     await createUtilitiesData('skill', { displayName });
+    mutateSkill();
   };
 
   const updateDataSkill = async (request: utilitiesDataType) => {
     await updateUtilitiesData('skill', request);
+    mutateSkill();
   };
   const deleteDataSkill = async (uid: string) => {
     await deleteUtilitiesData('skill', uid);
+    mutateSkill();
   };
 
   return {
@@ -83,12 +89,15 @@ export const useUtilitiesDataQualification = () => {
 
   const createDataQualification = async (displayName: string) => {
     await createUtilitiesData('qualification', { displayName });
+    mutateQuantification();
   };
   const updateDataQualification = async (request: utilitiesDataType) => {
     await updateUtilitiesData('qualification', request);
+    mutateQuantification();
   };
   const deleteDataQualification = async (uid: string) => {
     await deleteUtilitiesData('qualification', uid);
+    mutateQuantification();
   };
 
   return {
@@ -110,12 +119,15 @@ export const useUtilitiesDataManager = () => {
 
   const createDataManager = async (displayName: string) => {
     await createUtilitiesData('manager', { displayName });
+    mutateManager();
   };
   const updateDataManager = async (request: utilitiesDataType) => {
     await createUtilitiesData('manager', request);
+    mutateManager();
   };
   const deleteDataManager = async (uid: string) => {
     await deleteUtilitiesData('manager', uid);
+    mutateManager();
   };
 
   return {

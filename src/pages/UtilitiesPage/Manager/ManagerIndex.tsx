@@ -9,20 +9,16 @@ export const ManagerIndexPage = () => {
     createDataManager,
     deleteDataManager,
     updateDataManager,
-    mutateManager,
   } = useUtilitiesDataManager();
 
   const onCreateSubmit = async (data: { displayName: string }) => {
     await createDataManager(data.displayName);
-    mutateManager();
   };
   const onUpdateSubmit = async (uid: string, displayName: string) => {
     await updateDataManager({ uid, displayName });
-    mutateManager();
   };
   const onDeleteSubmit = async (uid: string) => {
     await deleteDataManager(uid);
-    mutateManager();
   };
 
   if (!utilitiesDataManager || isLoadingUtilitiesDataManager) return <h1>Loading...</h1>;

@@ -8,21 +8,17 @@ export const QuantificationIndexPage = () => {
     isLoadingUtilitiesDataQualification,
     createDataQualification,
     deleteDataQualification,
-    mutateQuantification,
     updateDataQualification,
   } = useUtilitiesDataQualification();
 
   const onCreateSubmit = async (data: { displayName: string }) => {
     await createDataQualification(data.displayName);
-    mutateQuantification();
   };
   const onUpdateSubmit = async (uid: string, displayName: string) => {
     await updateDataQualification({ uid, displayName });
-    mutateQuantification();
   };
   const onDeleteSubmit = async (uid: string) => {
     await deleteDataQualification(uid);
-    mutateQuantification();
   };
   if (!utilitiesDataQualification || isLoadingUtilitiesDataQualification)
     return <h1>Loading...</h1>;

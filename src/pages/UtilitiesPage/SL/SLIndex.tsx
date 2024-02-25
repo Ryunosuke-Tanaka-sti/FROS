@@ -3,28 +3,19 @@ import { UtilityList } from '@/components/modules/UtilityList/UtilityList';
 import { useUtilitiesDataSL } from '@/hooks/useUtilities';
 
 export const SLIndexPage = () => {
-  const {
-    utilitiesDataSL,
-    isLoadingUtilitiesDataSL,
-    createDataSL,
-    deleteDataSL,
-    updateDataSL,
-    mutateSL,
-  } = useUtilitiesDataSL();
+  const { utilitiesDataSL, isLoadingUtilitiesDataSL, createDataSL, deleteDataSL, updateDataSL } =
+    useUtilitiesDataSL();
 
   const onCreateSubmit = async (data: { displayName: string }) => {
     await createDataSL(data.displayName);
-    mutateSL();
   };
 
   const onUpdateSubmit = async (uid: string, displayName: string) => {
     await updateDataSL({ uid, displayName });
-    mutateSL();
   };
 
   const onDeleteSubmit = async (uid: string) => {
     await deleteDataSL(uid);
-    mutateSL();
   };
 
   if (!utilitiesDataSL || isLoadingUtilitiesDataSL) return <h1>Loading...</h1>;
