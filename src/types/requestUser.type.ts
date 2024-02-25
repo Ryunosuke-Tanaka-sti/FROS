@@ -9,6 +9,13 @@ export type RequestUpdateSkills = {
 export type RequestUpdateQualification = {
   qualification: Omit<UserQualificationDataType, 'displayName'>[];
 };
+export type RequestUpdatePersonalInfo = {
+  personalInfo: {
+    displayName: string;
+    photoURL: string;
+    sl: string[];
+  };
+};
 export type RequestUpdateUser = {
   personalInfo: {
     displayName: string;
