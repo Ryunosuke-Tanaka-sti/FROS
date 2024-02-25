@@ -1,14 +1,17 @@
 import useSWR from 'swr';
 
 import {
+  createUserMe,
   fetchUserMe,
   updateUserMe,
   updateUserMeManager,
+  updateUserMePersonalInfo,
   updateUserMeQualification,
   updateUserMeSkills,
 } from '@/api/User';
 import {
   RequestUpdateManager,
+  RequestUpdatePersonalInfo,
   RequestUpdateQualification,
   RequestUpdateSkills,
   RequestUpdateUser,
@@ -21,8 +24,18 @@ export const useUser = () => {
     mutate: userDataRefresh,
   } = useSWR('users/me', fetchUserMe);
 
+  const createUserMeFunction = async (userInfo: RequestUpdatePersonalInfo) => {
+    await createUserMe(userInfo);
+    userDataRefresh();
+  };
+
   const updateUserMeFunction = async (userInfo: RequestUpdateUser) => {
     await updateUserMe(userInfo);
+    userDataRefresh();
+  };
+
+  const updateUserMePersonalInfoFunction = async (userInfo: RequestUpdatePersonalInfo) => {
+    await updateUserMePersonalInfo(userInfo);
     userDataRefresh();
   };
 
@@ -44,9 +57,11 @@ export const useUser = () => {
     userData,
     isLoadingUserData,
     userDataRefresh,
+    createUserMeFunction,
     updateUserMeFunction,
     updateUserMeSkillsFunction,
     updateUserMeQualificationFunction,
     updateUserMeManagerFunction,
+    updateUserMePersonalInfoFunction,
   };
 };

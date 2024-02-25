@@ -3,30 +3,30 @@ import { useForm } from 'react-hook-form';
 import { Button } from '@/components/common/Button/Button';
 import { FormInputSelect } from '@/components/common/FormInputSelect/FormInputSelect';
 import { FormTextInput } from '@/components/common/FormTextInput/FormTextInput';
-import { UserPersonalInfoType } from '@/types/userData.type';
+import { RequestUpdatePersonalInfo } from '@/types/requestUser.type';
 import { utilitiesDataType } from '@/types/utilitiesData.type';
 
 type UserPersonalInputProps = {
-  userPersonalInfo: UserPersonalInfoType;
-  onClickRegistration: (data: UserPersonalInfoType) => void;
+  userPersonalInfo: RequestUpdatePersonalInfo;
   utilityDataSL: utilitiesDataType[];
+  onClickRegistration: (data: RequestUpdatePersonalInfo) => void;
 };
 
 export const UserPersonalInput = (props: UserPersonalInputProps) => {
   const { userPersonalInfo, onClickRegistration, utilityDataSL } = props;
-  const { handleSubmit, control } = useForm<UserPersonalInfoType>({
+  const { handleSubmit, control } = useForm<RequestUpdatePersonalInfo>({
     defaultValues: userPersonalInfo,
   });
   return (
     <>
       <form onSubmit={handleSubmit(onClickRegistration)}>
         <FormTextInput
-          name="displayName"
+          name="personalInfo.displayName"
           control={control}
           rules={{ required: '情報を入力してください' }}
         />
-        <FormTextInput name="photoURL" control={control} />
-        <FormInputSelect name={'sl'} control={control} utilityData={utilityDataSL} />
+        <FormTextInput name="personalInfo.photoURL" control={control} />
+        <FormInputSelect name={'personalInfo.sl'} control={control} utilityData={utilityDataSL} />
         <Button text="Submit" type="submit" />
       </form>
     </>

@@ -8,8 +8,8 @@ import { UserSkillDataType } from '@/types/userData.type';
 import { utilitiesDataType } from '@/types/utilitiesData.type';
 
 type UserSkillInputProps = {
-  utilitySkill: utilitiesDataType[];
   skill: Omit<UserSkillDataType, 'displayName'>[];
+  utilitySkill: utilitiesDataType[];
   onClickUpdate: (data: RequestUpdateSkills) => void;
 };
 

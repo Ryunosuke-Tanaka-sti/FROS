@@ -1,21 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 
-import { createUserMe } from '@/api/User';
 import { UserPersonalInput } from '@/components/modules/UserPersonalInput/UserPersonalInput';
 import { useUser } from '@/hooks/useUser';
 import { useUtilitiesDataSL } from '@/hooks/useUtilities';
-import { UserPersonalInfoType } from '@/types/userData.type';
+import { RequestUpdatePersonalInfo } from '@/types/requestUser.type';
 
 export const UserRegistrationPage = () => {
   const navigate = useNavigate();
-  const { userDataRefresh } = useUser();
+  const { createUserMeFunction } = useUser();
   const { utilitiesDataSL, isLoadingUtilitiesDataSL } = useUtilitiesDataSL();
 
-  const onClickRegistration = async (data: UserPersonalInfoType) => {
-    await createUserMe({
-      personalInfo: data,
-    });
-    userDataRefresh();
+  const onClickRegistration = async (data: RequestUpdatePersonalInfo) => {
+    await createUserMeFunction(data);
     navigate('/');
   };
 
@@ -26,7 +22,7 @@ export const UserRegistrationPage = () => {
       <h1>RegistrationPage</h1>
       <UserPersonalInput
         onClickRegistration={onClickRegistration}
-        userPersonalInfo={{ displayName: '', photoURL: '', sl: [] }}
+        userPersonalInfo={{ personalInfo: { displayName: '', photoURL: '', sl: [] } }}
         utilityDataSL={utilitiesDataSL}
       />
     </div>

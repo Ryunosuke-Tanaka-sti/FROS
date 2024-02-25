@@ -1,3 +1,5 @@
+import { utilitiesDataType } from '@/types/utilitiesData.type';
+
 export type UserDataType = {
   uid: string;
   personalInfo: UserPersonalInfoType;
@@ -9,7 +11,7 @@ export type UserDataType = {
 export type UserPersonalInfoType = {
   displayName: string;
   photoURL: string;
-  sl: string[];
+  sl: utilitiesDataType[];
 };
 
 export type UserSkillDataType = {

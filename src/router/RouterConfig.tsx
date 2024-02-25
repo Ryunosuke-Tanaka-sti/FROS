@@ -1,7 +1,6 @@
 import { Outlet, Route, Routes } from 'react-router-dom';
 
 import { TopPage } from '@/pages/TopPage';
-import { UserEditPage } from '@/pages/UserPage/UserEditPage';
 import { UserMePage } from '@/pages/UserPage/UserMePage';
 import { UserRegistrationPage } from '@/pages/UserPage/UserRegistrationPage';
 import { UtilitiesIndexPage } from '@/pages/UtilitiesPage/IndexPage';
@@ -20,7 +19,6 @@ export const RouterConfig = () => {
         <Route path="new" element={<UserRegistrationPage />} />
         <Route path="my-page" element={<Outlet />}>
           <Route index element={<UserMePage />} />
-          <Route path="edit" element={<UserEditPage />} />
         </Route>
         <Route path="utilities/" element={<UtilitiesLayout />}>
           <Route index element={<UtilitiesIndexPage />} />

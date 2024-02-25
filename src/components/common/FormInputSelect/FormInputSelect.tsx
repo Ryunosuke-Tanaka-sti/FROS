@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { FieldValues, UseControllerProps, useController } from 'react-hook-form';
 
 import { Tips } from '@/components/common/Tips/Tips';
@@ -11,13 +10,12 @@ type FormInputSelectProps<T extends FieldValues> = UseControllerProps<T> & {
 export const FormInputSelect = <T extends FieldValues>(props: FormInputSelectProps<T>) => {
   const { utilityData, name, control, rules } = props;
   const { field } = useController<T>({ name, control, rules });
-  useEffect(() => {
-    console.log('field.value', field.value);
-  }, [field.value]);
+  console.log(field.value);
 
-  const removeListSelectedUtility: utilitiesDataType[] = utilityData.filter(
-    (data) => field.value.indexOf(data.uid) === -1,
-  );
+  const removeListSelectedUtility: utilitiesDataType[] = utilityData.filter((data) => {
+    const target = field.value.find((value: string) => value === data.uid);
+    if (!target) return true;
+  });
   const listSelectedUtility: utilitiesDataType[] = field.value.map((value: string) => {
     return utilityData.find((data) => data.uid === value);
   });
@@ -28,17 +26,29 @@ export const FormInputSelect = <T extends FieldValues>(props: FormInputSelectPro
     field.onChange(field.value.filter((v: string) => v !== uid));
   };
 
+  // console.log('field.value', field.value);
+  // console.log('removeListSelectedUtility', removeListSelectedUtility);
+  // console.log('listSelectedUtility', listSelectedUtility);
+
   return (
     <div>
       <div>
         {listSelectedUtility.map((value) => (
-          <Tips text={value.displayName} onClick={() => removeSelectedUtility(value.uid)} />
+          <Tips
+            key={value.uid}
+            text={value.displayName}
+            onClick={() => removeSelectedUtility(value.uid)}
+          />
         ))}
       </div>
       <div>lll</div>
       <div>
         {removeListSelectedUtility.map((value) => (
-          <Tips text={value.displayName} onClick={() => appendSelectedUtility(value.uid)} />
+          <Tips
+            key={value.uid}
+            text={value.displayName}
+            onClick={() => appendSelectedUtility(value.uid)}
+          />
         ))}
       </div>
     </div>

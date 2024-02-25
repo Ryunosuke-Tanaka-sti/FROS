@@ -17,11 +17,7 @@ export type RequestUpdatePersonalInfo = {
   };
 };
 export type RequestUpdateUser = {
-  personalInfo: {
-    displayName: string;
-    photoURL: string;
-    sl: string[];
-  };
+  personalInfo: RequestUpdatePersonalInfo;
   skills: RequestUpdateSkills;
   qualification: RequestUpdateQualification;
   manager: RequestUpdateManager;

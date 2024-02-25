@@ -1,5 +1,6 @@
 import {
   RequestUpdateManager,
+  RequestUpdatePersonalInfo,
   RequestUpdateQualification,
   RequestUpdateSkills,
   RequestUpdateUser,
@@ -12,14 +13,16 @@ export const fetchUserMe = async () => {
   return res.data;
 };
 
-export const createUserMe = async (
-  request: Omit<UserDataType, 'uid' | 'skills' | 'qualification' | 'manager'>,
-) => {
+export const createUserMe = async (request: RequestUpdatePersonalInfo) => {
   await axiosClient.post('/api/users', request);
 };
 
 export const updateUserMe = async (request: RequestUpdateUser) => {
   await axiosClient.put('/api/users', request);
+};
+
+export const updateUserMePersonalInfo = async (request: RequestUpdatePersonalInfo) => {
+  await axiosClient.put('/api/users/personalInfo', request);
 };
 
 export const updateUserMeSkills = async (request: RequestUpdateSkills) => {

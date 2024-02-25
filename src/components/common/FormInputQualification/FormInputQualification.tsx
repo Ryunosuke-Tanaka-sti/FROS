@@ -15,10 +15,15 @@ export const FormInputQualification = <T extends FieldValues>(
     console.log(new Date(newDate));
     field.onChange(newDate);
   };
+  const onChangeUnlimited = () => {
+    field.onChange(undefined);
+  };
 
   return (
     <>
       {field.value}
+
+      <span onClick={onChangeUnlimited}>無期限</span>
 
       <DatePicker
         className=""
