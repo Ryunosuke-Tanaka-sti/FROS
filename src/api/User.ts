@@ -12,6 +12,10 @@ export const fetchUserMe = async () => {
   const res = await axiosClient.get<UserDataType>('/api/users/me');
   return res.data;
 };
+export const fetchUser = async (userId: string) => {
+  const res = await axiosClient.get<UserDataType>(`/api/users/${userId}`);
+  return res.data;
+};
 
 export const createUserMe = async (request: RequestUpdatePersonalInfo) => {
   await axiosClient.post('/api/users', request);

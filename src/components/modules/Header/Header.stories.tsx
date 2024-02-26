@@ -1,15 +1,15 @@
-import { FormListItem } from "./FormListItem";
+import { Header } from "./Header";
 
 import type {Meta, StoryObj} from '@storybook/react';
 
 
 const meta = {
-    title: "modules/FormListItem",
-    component: FormListItem,
+    title: "modules/Header",
+    component: Header,
     tags: ['autodocs'],
     argTypes: {
     },
-} satisfies Meta<typeof FormListItem>;
+} satisfies Meta<typeof Header>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

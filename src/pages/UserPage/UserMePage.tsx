@@ -2,7 +2,7 @@ import { UserManagerInput } from '@/components/modules/UserManagerInput/UserMana
 import { UserPersonalInput } from '@/components/modules/UserPersonalInput/UserPersonalInput';
 import { UserQualificationInput } from '@/components/modules/UserQualificationInput/UserQualificationInput';
 import { UserSkillInput } from '@/components/modules/UserSkillInput/UserSkillInput';
-import { useUser } from '@/hooks/useUser';
+import { useUserMe } from '@/hooks/useUser';
 import {
   useUtilitiesDataManager,
   useUtilitiesDataQualification,
@@ -24,7 +24,13 @@ export const UserMePage = () => {
     updateUserMeManagerFunction,
     updateUserMeQualificationFunction,
     updateUserMePersonalInfoFunction,
-  } = useUser();
+  } = useUserMe();
+
+  // const editStatePersonalInfo = useState<boolean>(false);
+  // const editStateManager = useState<boolean>(false);
+  // const editStateSkill = useState<boolean>(false);
+  // const editStateQualification = useState<boolean>(false);
+
   const { utilitiesDataManager, isLoadingUtilitiesDataManager } = useUtilitiesDataManager();
   const { utilitiesDataSkill, isLoadingUtilitiesDataSkill } = useUtilitiesDataSkill();
   const { utilitiesDataQualification, isLoadingUtilitiesDataQualification } =
@@ -52,27 +58,7 @@ export const UserMePage = () => {
   if (!utilitiesDataQualification || isLoadingUtilitiesDataQualification) return <div>loading</div>;
   if (!utilitiesDataSL || isLoadingUtilitiesDataSL) return <div>loading</div>;
   return (
-    <div>
-      <h1>UserEditPage</h1>
-      <UserManagerInput
-        manager={userData.manager.map((value) => value.uid)}
-        utilityManager={utilitiesDataManager}
-        onClickUpdate={onClickUpdateManager}
-      />
-      <UserSkillInput
-        skill={userData.skills.map((value) => {
-          return { uid: value.uid, level: value.level };
-        })}
-        onClickUpdate={onClickUpdateSkills}
-        utilitySkill={utilitiesDataSkill}
-      />
-      <UserQualificationInput
-        qualification={userData.qualification.map((value) => {
-          return { uid: value.uid, expiryDate: value.expiryDate };
-        })}
-        onClickUpdate={onClickUpdateQualification}
-        utilityQualification={utilitiesDataQualification}
-      />
+    <div className="flex w-full flex-row items-start gap-5 p-10">
       <UserPersonalInput
         userPersonalInfo={{
           personalInfo: {
@@ -84,6 +70,27 @@ export const UserMePage = () => {
         utilityDataSL={utilitiesDataSL}
         onClickRegistration={onClickUpdatePersonalInfo}
       />
+      <div className="flex grow flex-col gap-5">
+        <UserManagerInput
+          manager={userData.manager.map((value) => value.uid)}
+          utilityManager={utilitiesDataManager}
+          onClickUpdate={onClickUpdateManager}
+        />
+        <UserSkillInput
+          skill={userData.skills.map((value) => {
+            return { uid: value.uid, level: value.level };
+          })}
+          onClickUpdate={onClickUpdateSkills}
+          utilitySkill={utilitiesDataSkill}
+        />
+        <UserQualificationInput
+          qualification={userData.qualification.map((value) => {
+            return { uid: value.uid, expiryDate: value.expiryDate };
+          })}
+          onClickUpdate={onClickUpdateQualification}
+          utilityQualification={utilitiesDataQualification}
+        />
+      </div>
     </div>
   );
 };

@@ -1,16 +1,17 @@
 import React from 'react';
 import { FieldValues, UseControllerProps, useController } from 'react-hook-form';
 
-type FormInputSkillProps<T extends FieldValues> = UseControllerProps<T>;
+type FormInputSkillProps<T extends FieldValues> = UseControllerProps<T> & {
+  removeAction: () => void;
+};
 export const FormInputSkill = <T extends FieldValues>(props: FormInputSkillProps<T>) => {
-  const { name, control, rules } = props;
+  const { name, control, rules, removeAction } = props;
   const { field } = useController<T>({ name, control, rules });
   const onClickLevel = (level: number) => {
     field.onChange(level);
   };
   return (
-    <>
-      {field.value}
+    <div className="flex flex-row gap-4">
       <Select currentLevel={field.value}>
         <SelectItem level={1} onClick={onClickLevel} />
         <SelectItem level={2} onClick={onClickLevel} />
@@ -18,7 +19,10 @@ export const FormInputSkill = <T extends FieldValues>(props: FormInputSkillProps
         <SelectItem level={4} onClick={onClickLevel} />
         <SelectItem level={5} onClick={onClickLevel} />
       </Select>
-    </>
+      <button type="button" onClick={removeAction}>
+        削除
+      </button>
+    </div>
   );
 };
 type SelectProps = {

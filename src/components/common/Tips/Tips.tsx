@@ -1,12 +1,12 @@
 type TipsProps = {
   text: string;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 export const Tips = (props: TipsProps) => {
   const { text, onClick } = props;
   return (
-    <span onClick={onClick} className="mx-4 my-2 flex rounded-md border text-xs">
+    <span onClick={onClick} className="inline-flex rounded-md border px-4 py-1 text-xs">
       {text}
     </span>
   );

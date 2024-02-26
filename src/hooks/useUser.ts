@@ -2,6 +2,7 @@ import useSWR from 'swr';
 
 import {
   createUserMe,
+  fetchUser,
   fetchUserMe,
   updateUserMe,
   updateUserMeManager,
@@ -17,7 +18,7 @@ import {
   RequestUpdateUser,
 } from '@/types/requestUser.type';
 
-export const useUser = () => {
+export const useUserMe = () => {
   const {
     data: userData,
     isLoading: isLoadingUserData,
@@ -64,4 +65,11 @@ export const useUser = () => {
     updateUserMeManagerFunction,
     updateUserMePersonalInfoFunction,
   };
+};
+
+export const useUserById = (userId: string) => {
+  const { data: userData, isLoading: isLoadingUserData } = useSWR(`users/${userId}`, () =>
+    fetchUser(userId),
+  );
+  return { userData, isLoadingUserData };
 };

@@ -19,16 +19,21 @@ export const UserPersonalInput = (props: UserPersonalInputProps) => {
   });
   return (
     <>
-      <form onSubmit={handleSubmit(onClickRegistration)}>
-        <FormTextInput
-          name="personalInfo.displayName"
-          control={control}
-          rules={{ required: '情報を入力してください' }}
-        />
-        <FormTextInput name="personalInfo.photoURL" control={control} />
-        <FormInputSelect name={'personalInfo.sl'} control={control} utilityData={utilityDataSL} />
-        <Button text="Submit" type="submit" />
-      </form>
+      <div className=" flex w-96 flex-col overflow-hidden rounded-2xl border-inherit bg-white shadow">
+        <h2 className="w-full bg-main-500 px-2 py-1 text-xl font-bold text-white">
+          ユーザー情報入力
+        </h2>
+        <form className="flex flex-col gap-3 p-4" onSubmit={handleSubmit(onClickRegistration)}>
+          <FormTextInput
+            name="personalInfo.displayName"
+            control={control}
+            rules={{ required: '情報を入力してください' }}
+          />
+          <FormTextInput name="personalInfo.photoURL" control={control} />
+          <FormInputSelect name={'personalInfo.sl'} control={control} utilityData={utilityDataSL} />
+          <Button text="Submit" type="submit" />
+        </form>
+      </div>
     </>
   );
 };

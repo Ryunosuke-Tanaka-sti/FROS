@@ -1,13 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 
+import { Title } from '@/components/common/Title/Title';
 import { UserPersonalInput } from '@/components/modules/UserPersonalInput/UserPersonalInput';
-import { useUser } from '@/hooks/useUser';
+import { useUserMe } from '@/hooks/useUser';
 import { useUtilitiesDataSL } from '@/hooks/useUtilities';
 import { RequestUpdatePersonalInfo } from '@/types/requestUser.type';
 
 export const UserRegistrationPage = () => {
   const navigate = useNavigate();
-  const { createUserMeFunction } = useUser();
+  const { createUserMeFunction } = useUserMe();
   const { utilitiesDataSL, isLoadingUtilitiesDataSL } = useUtilitiesDataSL();
 
   const onClickRegistration = async (data: RequestUpdatePersonalInfo) => {
@@ -18,8 +19,8 @@ export const UserRegistrationPage = () => {
   if (!utilitiesDataSL || isLoadingUtilitiesDataSL) return <div>loading...</div>;
 
   return (
-    <div>
-      <h1>RegistrationPage</h1>
+    <div className="flex h-full grow flex-col items-center justify-center gap-10">
+      <Title text="初回登録お願いします" size="xl" />
       <UserPersonalInput
         onClickRegistration={onClickRegistration}
         userPersonalInfo={{ personalInfo: { displayName: '', photoURL: '', sl: [] } }}

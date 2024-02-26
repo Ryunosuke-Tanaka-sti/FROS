@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 
-import { FormListItem } from '@/components/modules/FormListItem/FormListItem';
+import { FormListItem } from '@/components/common/FormListItem/FormListItem';
 import { utilitiesDataType } from '@/types/utilitiesData.type';
 
 type UtilityListProps = {

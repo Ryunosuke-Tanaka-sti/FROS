@@ -1,20 +1,20 @@
 import { Outlet } from 'react-router-dom';
 
-import { FooterComponent } from '@/components/modules/FooterComponent';
-import { HeaderComponent } from '@/components/modules/HeaderComponent';
+import { Footer } from '@/components/modules/Footer/Footer';
+import { Header } from '@/components/modules/Header/Header';
 import { UtilitiesConfig } from '@/utilities/UtilitiesConfig';
 
 export const ParentLayout = () => {
   return (
     <>
-      <section>
-        <HeaderComponent />
-        <main>
+      <section className="flex min-h-screen flex-col">
+        <Header />
+        <main className="flex grow flex-col">
           <UtilitiesConfig>
             <Outlet />
           </UtilitiesConfig>
         </main>
-        <FooterComponent />
+        <Footer />
       </section>
     </>
   );

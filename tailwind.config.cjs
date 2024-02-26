@@ -4,7 +4,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {},
-      colors: {},
+      colors: {
+        main: {
+          500: '#5AAFE1',
+        },
+        text: '#384955',
+      },
     },
   },
   plugins: [],

@@ -1,6 +1,7 @@
 import { FieldValues, UseControllerProps, useController } from 'react-hook-form';
 
 import { Tips } from '@/components/common/Tips/Tips';
+import { Title } from '@/components/common/Title/Title';
 import { utilitiesDataType } from '@/types/utilitiesData.type';
 
 type FormInputSelectProps<T extends FieldValues> = UseControllerProps<T> & {
@@ -31,25 +32,30 @@ export const FormInputSelect = <T extends FieldValues>(props: FormInputSelectPro
   // console.log('listSelectedUtility', listSelectedUtility);
 
   return (
-    <div>
-      <div>
-        {listSelectedUtility.map((value) => (
-          <Tips
-            key={value.uid}
-            text={value.displayName}
-            onClick={() => removeSelectedUtility(value.uid)}
-          />
-        ))}
+    <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-1">
+        <Title text="選択済み" size="sm" />
+        <div className="flex flex-row flex-wrap gap-2">
+          {listSelectedUtility.map((value) => (
+            <Tips
+              key={value.uid}
+              text={value.displayName}
+              onClick={() => removeSelectedUtility(value.uid)}
+            />
+          ))}
+        </div>
       </div>
-      <div>lll</div>
-      <div>
-        {removeListSelectedUtility.map((value) => (
-          <Tips
-            key={value.uid}
-            text={value.displayName}
-            onClick={() => appendSelectedUtility(value.uid)}
-          />
-        ))}
+      <div className="flex flex-col gap-1">
+        <Title text="選択可能" size="sm" />
+        <div className="flex flex-row flex-wrap gap-2">
+          {removeListSelectedUtility.map((value) => (
+            <Tips
+              key={value.uid}
+              text={value.displayName}
+              onClick={() => appendSelectedUtility(value.uid)}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

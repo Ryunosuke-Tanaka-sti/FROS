@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import Select, { SingleValue } from 'react-select';
 
+import { Button } from '@/components/common/Button/Button';
 import { FormInputSkill } from '@/components/common/FormInputSkill/FormInputSkill';
 import { RequestUpdateSkills } from '@/types/requestUser.type';
 import { UserSkillDataType } from '@/types/userData.type';
@@ -49,30 +50,41 @@ export const UserSkillInput = (props: UserSkillInputProps) => {
   };
   return (
     <>
-      <form onSubmit={handleSubmit(onClickUpdate)}>
-        <Select
-          instanceId={'search-select-box'}
-          value={null}
-          options={removeListSelectedUtility.map((value) => ({
-            value: value.uid,
-            label: value.displayName,
-          }))}
-          onChange={handleChange}
-          noOptionsMessage={() => '検索に引っかかりませんでした'}
-          placeholder="スキルを選択してください"
-          isSearchable={true}
-        />
-        {selectListUtility.map((field, index) => (
-          <div key={field.uid}>
-            {field.displayName}
-            <FormInputSkill name={`skills.${index}.level`} control={control} rules={{}} />
-            <button type="button" onClick={() => remove(index)}>
-              削除
-            </button>
+      <div className="flex flex-col overflow-hidden rounded-2xl border-inherit   bg-white  shadow">
+        <h2 className="w-full bg-main-500 px-2 py-1 text-xl font-bold text-white">
+          スキル情報入力
+        </h2>
+        <form className="flex min-h-60 flex-col gap-3 p-4" onSubmit={handleSubmit(onClickUpdate)}>
+          <div className="flex grow flex-col gap-2">
+            <Select
+              instanceId={'search-select-box'}
+              value={null}
+              options={removeListSelectedUtility.map((value) => ({
+                value: value.uid,
+                label: value.displayName,
+              }))}
+              onChange={handleChange}
+              noOptionsMessage={() => '検索に引っかかりませんでした'}
+              placeholder="スキルを選択してください"
+              isSearchable={true}
+            />
+            <ul className="flex flex-col gap-3">
+              {selectListUtility.map((field, index) => (
+                <li className="flex flex-row items-center justify-between py-2" key={field.uid}>
+                  {field.displayName}
+                  <FormInputSkill
+                    name={`skills.${index}.level`}
+                    control={control}
+                    rules={{}}
+                    removeAction={() => remove(index)}
+                  />
+                </li>
+              ))}
+            </ul>
           </div>
-        ))}
-        <button type="submit">更新</button>
-      </form>
+          <Button text="更新" type="submit" />
+        </form>
+      </div>
     </>
   );
 };
