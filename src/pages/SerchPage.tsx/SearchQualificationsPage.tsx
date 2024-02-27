@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { FilterFormSelect } from '@/components/modules/FilterFormSelect/FilterFormSelect';
+import { SearchQualificationsList } from '@/components/modules/SearchQualificationsList/SearchQualificationsList';
 import { useSearchQualification } from '@/hooks/useSearch';
 
 export const SearchQualificationsPage = () => {
@@ -27,8 +28,7 @@ export const SearchQualificationsPage = () => {
         selectUtility={utilities}
         onActionSearch={onSubmitAction}
       />
-      {isLoadingSearchData && <div>loading</div>}
-      {JSON.stringify(searchQualificationData.qualifications)}
+      <SearchQualificationsList qualifications={searchQualificationData.qualifications} />
     </div>
   );
 };

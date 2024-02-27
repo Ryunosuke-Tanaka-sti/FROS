@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { FilterFormSelect } from '@/components/modules/FilterFormSelect/FilterFormSelect';
+import { SearchSkillsTable } from '@/components/modules/SearchSkillsTable/SearchSkillsTable';
 import { useSearchSkills } from '@/hooks/useSearch';
 
 export const SearchSkillsPage = () => {
@@ -10,8 +11,7 @@ export const SearchSkillsPage = () => {
 
   const navigate = useNavigate();
   const ids = searchParams.get('ids') ?? undefined;
-  const { searchSkillData, isLoadingSearchData, isValidatingSearchData, mutateSearchSkill } =
-    useSearchSkills(ids);
+  const { searchSkillData, isLoadingSearchData, mutateSearchSkill } = useSearchSkills(ids);
 
   const utilities = useMemo(() => (ids ? ids.split(',') : []), [ids]);
   const onSubmitAction = (ids: string) => {
@@ -29,8 +29,7 @@ export const SearchSkillsPage = () => {
         selectUtility={utilities}
         onActionSearch={onSubmitAction}
       />
-      {isValidatingSearchData && <div>loading</div>}
-      {JSON.stringify(searchSkillData.users)}
+      <SearchSkillsTable utilities={searchSkillData.utilities} users={searchSkillData.users} />
     </div>
   );
 };

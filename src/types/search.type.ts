@@ -9,7 +9,7 @@ export type SearchSkill = {
       displayName: string;
       level: number;
     }[];
-  };
+  }[];
   utilities: {
     skills: utilitiesDataType[];
   };

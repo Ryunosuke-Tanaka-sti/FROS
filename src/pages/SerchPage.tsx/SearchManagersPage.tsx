@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { FilterFormSelect } from '@/components/modules/FilterFormSelect/FilterFormSelect';
+import { SearchManagersList } from '@/components/modules/SearchManagersList/SearchManagersList';
 import { useSearchManager } from '@/hooks/useSearch';
 
 export const SearchManagersPage = () => {
@@ -28,8 +29,7 @@ export const SearchManagersPage = () => {
         selectUtility={utilities}
         onActionSearch={onSubmitAction}
       />
-      {isLoadingSearchData && <div>loading</div>}
-      {JSON.stringify(searchManagerData.managers)}
+      <SearchManagersList managers={searchManagerData.managers} />
     </div>
   );
 };
