@@ -15,7 +15,7 @@ export const Header = () => {
           MYページ
         </button>
         <button
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/search')}
           className="w-40 rounded-md border-2 border-main-500 py-4 text-main-500"
         >
           検索ページ

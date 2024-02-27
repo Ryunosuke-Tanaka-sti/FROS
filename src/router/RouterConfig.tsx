@@ -13,6 +13,7 @@ import { QuantificationIndexPage } from '@/pages/UtilitiesPage/Quantification/Qu
 import { SLIndexPage } from '@/pages/UtilitiesPage/SL/SLIndex';
 import { SkillIndexPage } from '@/pages/UtilitiesPage/Skill/SkillIndex';
 import { ParentLayout } from '@/pages/layout/ParentLayout';
+import { SearchLayout } from '@/pages/layout/SearchLayout';
 import { UtilitiesLayout } from '@/pages/layout/UtilitiesLayout';
 
 export const RouterConfig = () => {
@@ -24,7 +25,7 @@ export const RouterConfig = () => {
         <Route path="my-page" element={<Outlet />}>
           <Route index element={<UserMePage />} />
         </Route>
-        <Route path="search" element={<Outlet />}>
+        <Route path="search" element={<SearchLayout />}>
           <Route index element={<SearchSkillsPage />} />
           <Route path="managers" element={<SearchManagersPage />} />
           <Route path="qualifications" element={<SearchQualificationsPage />} />
