@@ -1,3 +1,5 @@
+import { useForm } from 'react-hook-form';
+
 import { FormListItem } from './FormListItem';
 
 import type { Meta, StoryObj } from '@storybook/react';
@@ -13,5 +15,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    name: 'data',
+  },
+  render: function Comp({ ...args }) {
+    const { control } = useForm<{ data: string }>({
+      defaultValues: {
+        data: 'TEST',
+      },
+    });
+    return <meta.component {...args} control={control} name={'data'} rules={{}} />;
+  },
 };

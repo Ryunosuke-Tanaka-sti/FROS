@@ -12,7 +12,7 @@ export const FormTextInput = <T extends FieldValues>(props: FormTextInputProps<T
     <div className="flex flex-col">
       <div className="flex flex-row items-center gap-2">
         <label className="w-36" htmlFor={name}>
-          {TextConvertor[`${name}`] ?? { name }}
+          {TextConvertor[`${name}`] ? TextConvertor[`${name}`] : name}
         </label>
         <input
           className="grow rounded border p-2"

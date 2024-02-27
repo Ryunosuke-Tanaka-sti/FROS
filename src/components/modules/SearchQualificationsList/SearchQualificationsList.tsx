@@ -1,17 +1,13 @@
-import { useNavigate } from 'react-router-dom';
-
 import { SearchQualification } from '@/types/search.type';
 
 type SearchQualificationsListProps = {
   qualifications: SearchQualification['qualifications'];
+  onClickUser: (uid: string) => void;
 };
 
 export const SearchQualificationsList = (props: SearchQualificationsListProps) => {
-  const { qualifications } = props;
-  const navigate = useNavigate();
-  const onClickUser = (uid: string) => {
-    navigate(`/users/${uid}`);
-  };
+  const { qualifications, onClickUser } = props;
+
   return (
     <>
       <div className="flex flex-col p-1">

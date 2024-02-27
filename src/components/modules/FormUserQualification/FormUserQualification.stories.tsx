@@ -1,3 +1,5 @@
+import { selectQualification, utilityData } from '@/constant/dummy/utilityData';
+
 import { FormQualification } from './FormUserQualification';
 
 import type { Meta, StoryObj } from '@storybook/react';
@@ -13,5 +15,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    qualification: selectQualification,
+    utilityQualification: utilityData,
+  },
 };

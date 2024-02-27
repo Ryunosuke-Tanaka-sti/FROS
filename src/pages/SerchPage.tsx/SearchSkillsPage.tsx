@@ -18,6 +18,9 @@ export const SearchSkillsPage = () => {
     navigate(`/search?ids=${ids}`);
     mutateSearchSkill(ids);
   };
+  const onClickUser = (uid: string) => {
+    navigate(`/users/${uid}`);
+  };
 
   if (isLoadingSearchData) return <div>loading</div>;
   if (!searchSkillData) return <div>loading</div>;
@@ -29,7 +32,7 @@ export const SearchSkillsPage = () => {
         selectUtility={utilities}
         onActionSearch={onSubmitAction}
       />
-      <SearchSkillsTable utilities={searchSkillData.utilities} users={searchSkillData.users} />
+      <SearchSkillsTable skills={searchSkillData} onClickUser={onClickUser} />
     </div>
   );
 };

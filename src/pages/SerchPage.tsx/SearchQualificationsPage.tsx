@@ -18,6 +18,9 @@ export const SearchQualificationsPage = () => {
     mutateSearchQualification(ids);
     navigate(`/search/qualifications?ids=${ids}`);
   };
+  const onClickUser = (uid: string) => {
+    navigate(`/users/${uid}`);
+  };
   if (isLoadingSearchData) return <div>loading</div>;
   if (!searchQualificationData) return <div>loading</div>;
   return (
@@ -28,7 +31,10 @@ export const SearchQualificationsPage = () => {
         selectUtility={utilities}
         onActionSearch={onSubmitAction}
       />
-      <SearchQualificationsList qualifications={searchQualificationData.qualifications} />
+      <SearchQualificationsList
+        qualifications={searchQualificationData.qualifications}
+        onClickUser={onClickUser}
+      />
     </div>
   );
 };

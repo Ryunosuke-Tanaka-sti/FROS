@@ -1,21 +1,23 @@
-import { FilterFormSelect } from "./FilterFormSelect";
+import { selectUtility, utilityData } from '@/constant/dummy/utilityData';
 
-import type {Meta, StoryObj} from '@storybook/react';
+import { FilterFormSelect } from './FilterFormSelect';
 
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
-    title: "modules/FilterFormSelect",
-    component: FilterFormSelect,
-    tags: ['autodocs'],
-    argTypes: {
-    },
+  title: 'modules/FilterFormSelect',
+  component: FilterFormSelect,
+  tags: ['autodocs'],
+  argTypes: {},
 } satisfies Meta<typeof FilterFormSelect>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary : Story = {
-    args : {
-        
-    },
+export const Primary: Story = {
+  args: {
+    filterName: 'filterName',
+    selectUtility: selectUtility,
+    utility: utilityData,
+  },
 };

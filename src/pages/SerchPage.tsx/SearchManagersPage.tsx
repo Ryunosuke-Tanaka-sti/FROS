@@ -17,6 +17,9 @@ export const SearchManagersPage = () => {
     mutateSearchManager(ids);
     navigate(`/search/managers?ids=${ids}`);
   };
+  const onClickUser = (uid: string) => {
+    navigate(`/users/${uid}`);
+  };
 
   if (isLoadingSearchData) return <div>loading</div>;
   if (!searchManagerData) return <div>loading</div>;
@@ -29,7 +32,7 @@ export const SearchManagersPage = () => {
         selectUtility={utilities}
         onActionSearch={onSubmitAction}
       />
-      <SearchManagersList managers={searchManagerData.managers} />
+      <SearchManagersList managers={searchManagerData.managers} onClickUser={onClickUser} />
     </div>
   );
 };

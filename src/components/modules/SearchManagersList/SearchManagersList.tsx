@@ -1,17 +1,13 @@
-import { useNavigate } from 'react-router-dom';
-
 import { SearchManager } from '@/types/search.type';
 
 type SearchManagersListProps = {
   managers: SearchManager['managers'];
+  onClickUser: (uid: string) => void;
 };
 
 export const SearchManagersList = (props: SearchManagersListProps) => {
-  const { managers } = props;
-  const navigate = useNavigate();
-  const onClickUser = (uid: string) => {
-    navigate(`/users/${uid}`);
-  };
+  const { managers, onClickUser } = props;
+
   return (
     <>
       <div className="flex flex-col p-1">

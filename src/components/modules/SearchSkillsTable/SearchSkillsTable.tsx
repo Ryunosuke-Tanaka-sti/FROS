@@ -1,15 +1,14 @@
-import { useNavigate } from 'react-router-dom';
-
 import { SearchSkill } from '@/types/search.type';
 
-type SearchSkillsTableProps = SearchSkill;
+type SearchSkillsTableProps = {
+  skills: SearchSkill;
+  onClickUser: (uid: string) => void;
+};
 
 export const SearchSkillsTable = (props: SearchSkillsTableProps) => {
-  const { users, utilities } = props;
-  const navigate = useNavigate();
-  const onClickUser = (uid: string) => {
-    navigate(`/users/${uid}`);
-  };
+  const { onClickUser, skills } = props;
+  const { users, utilities } = skills;
+
   return (
     <table className="min-w-full border text-center text-sm font-light dark:border-neutral-500">
       <thead className="border-b font-medium dark:border-neutral-500">
