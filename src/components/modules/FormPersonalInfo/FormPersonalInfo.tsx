@@ -6,13 +6,13 @@ import { FormTextInput } from '@/components/common/FormTextInput/FormTextInput';
 import { RequestUpdatePersonalInfo } from '@/types/requestUser.type';
 import { utilitiesDataType } from '@/types/utilitiesData.type';
 
-type UserPersonalInputProps = {
+type FormPersonalInfoProps = {
   userPersonalInfo: RequestUpdatePersonalInfo;
   utilityDataSL: utilitiesDataType[];
   onClickRegistration: (data: RequestUpdatePersonalInfo) => void;
 };
 
-export const UserPersonalInput = (props: UserPersonalInputProps) => {
+export const FormPersonalInfo = (props: FormPersonalInfoProps) => {
   const { userPersonalInfo, onClickRegistration, utilityDataSL } = props;
   const { handleSubmit, control } = useForm<RequestUpdatePersonalInfo>({
     defaultValues: userPersonalInfo,

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import { Title } from '@/components/common/Title/Title';
-import { UserPersonalInput } from '@/components/modules/UserPersonalInput/UserPersonalInput';
+import { FormPersonalInfo } from '@/components/modules/FormPersonalInfo/FormPersonalInfo';
 import { useUserMe } from '@/hooks/useUser';
 import { useUtilitiesDataSL } from '@/hooks/useUtilities';
 import { RequestUpdatePersonalInfo } from '@/types/requestUser.type';
@@ -21,7 +21,7 @@ export const UserRegistrationPage = () => {
   return (
     <div className="flex h-full grow flex-col items-center justify-center gap-10">
       <Title text="初回登録お願いします" size="xl" />
-      <UserPersonalInput
+      <FormPersonalInfo
         onClickRegistration={onClickRegistration}
         userPersonalInfo={{ personalInfo: { displayName: '', photoURL: '', sl: [] } }}
         utilityDataSL={utilitiesDataSL}

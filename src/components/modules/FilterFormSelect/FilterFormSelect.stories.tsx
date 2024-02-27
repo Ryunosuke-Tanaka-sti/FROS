@@ -1,15 +1,15 @@
-import { UserQualificationInput } from "./UserQualificationInput";
+import { FilterFormSelect } from "./FilterFormSelect";
 
 import type {Meta, StoryObj} from '@storybook/react';
 
 
 const meta = {
-    title: "modules/UserQualificationInput",
-    component: UserQualificationInput,
+    title: "modules/FilterFormSelect",
+    component: FilterFormSelect,
     tags: ['autodocs'],
     argTypes: {
     },
-} satisfies Meta<typeof UserQualificationInput>;
+} satisfies Meta<typeof FilterFormSelect>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

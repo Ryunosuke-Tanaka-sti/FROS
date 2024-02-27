@@ -1,7 +1,21 @@
+import { Children } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 import { MenuItem } from '@/components/common/MenuItem/MenuItem';
-import { UtilityMenu } from '@/components/modules/UtilityMenu/UtilityMenu';
+
+type UtilityMenuProps = {
+  children: React.ReactNode;
+};
+
+const UtilityMenu = ({ children }: UtilityMenuProps) => {
+  return (
+    <ul className="flex w-32 flex-col gap-2 ">
+      {Children.map(children, (child) => {
+        return <>{child}</>;
+      })}
+    </ul>
+  );
+};
 
 export const UtilitiesLayout = () => {
   const navigate = useNavigate();

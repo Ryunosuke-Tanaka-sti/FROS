@@ -1,5 +1,8 @@
 import { Outlet, Route, Routes } from 'react-router-dom';
 
+import { SearchManagersPage } from '@/pages/SerchPage.tsx/SearchManagersPage';
+import { SearchQualificationsPage } from '@/pages/SerchPage.tsx/SearchQualificationsPage';
+import { SearchSkillsPage } from '@/pages/SerchPage.tsx/SearchSkillsPage';
 import { TopPage } from '@/pages/TopPage';
 import { UserMePage } from '@/pages/UserPage/UserMePage';
 import { UserPage } from '@/pages/UserPage/UserPage';
@@ -20,6 +23,11 @@ export const RouterConfig = () => {
         <Route path="new" element={<UserRegistrationPage />} />
         <Route path="my-page" element={<Outlet />}>
           <Route index element={<UserMePage />} />
+        </Route>
+        <Route path="search" element={<Outlet />}>
+          <Route index element={<SearchSkillsPage />} />
+          <Route path="managers" element={<SearchManagersPage />} />
+          <Route path="qualifications" element={<SearchQualificationsPage />} />
         </Route>
         <Route path="users/" element={<Outlet />}>
           <Route path=":userID" element={<UserPage />} />

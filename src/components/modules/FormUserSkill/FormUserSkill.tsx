@@ -8,13 +8,13 @@ import { RequestUpdateSkills } from '@/types/requestUser.type';
 import { UserSkillDataType } from '@/types/userData.type';
 import { utilitiesDataType } from '@/types/utilitiesData.type';
 
-type UserSkillInputProps = {
+type FormUserSkillProps = {
   skill: Omit<UserSkillDataType, 'displayName'>[];
   utilitySkill: utilitiesDataType[];
   onClickUpdate: (data: RequestUpdateSkills) => void;
 };
 
-export const UserSkillInput = (props: UserSkillInputProps) => {
+export const FormUserSkill = (props: FormUserSkillProps) => {
   const { skill, utilitySkill, onClickUpdate } = props;
   const { control, handleSubmit } = useForm<RequestUpdateSkills>({
     defaultValues: {

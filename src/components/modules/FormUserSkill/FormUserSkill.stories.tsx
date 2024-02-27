@@ -1,15 +1,15 @@
-import { UserPersonalInput } from "./UserPersonalInput";
+import { FormUserSkill } from "./FormUserSkill";
 
 import type {Meta, StoryObj} from '@storybook/react';
 
 
 const meta = {
-    title: "modules/UserPersonalInput",
-    component: UserPersonalInput,
+    title: "modules/FormUserSkill",
+    component: FormUserSkill,
     tags: ['autodocs'],
     argTypes: {
     },
-} satisfies Meta<typeof UserPersonalInput>;
+} satisfies Meta<typeof FormUserSkill>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

@@ -5,13 +5,13 @@ import { FormInputDropList } from '@/components/common/FormInputDropList/FormInp
 import { RequestUpdateManager } from '@/types/requestUser.type';
 import { utilitiesDataType } from '@/types/utilitiesData.type';
 
-type UserManagerInputProps = {
+type FormUserManagerProps = {
   utilityManager: utilitiesDataType[];
   manager: string[];
   onClickUpdate: (data: RequestUpdateManager) => void;
 };
 
-export const UserManagerInput = (props: UserManagerInputProps) => {
+export const FormUserManager = (props: FormUserManagerProps) => {
   const { manager, utilityManager, onClickUpdate } = props;
 
   const { control, handleSubmit } = useForm<RequestUpdateManager>({

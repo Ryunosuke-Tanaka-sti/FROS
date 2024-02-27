@@ -8,13 +8,13 @@ import { RequestUpdateQualification } from '@/types/requestUser.type';
 import { UserQualificationDataType } from '@/types/userData.type';
 import { utilitiesDataType } from '@/types/utilitiesData.type';
 
-type UserQualificationInputProps = {
+type FormQualificationProps = {
   utilityQualification: utilitiesDataType[];
   qualification: Omit<UserQualificationDataType, 'displayName'>[];
   onClickUpdate: (data: RequestUpdateQualification) => void;
 };
 
-export const UserQualificationInput = (props: UserQualificationInputProps) => {
+export const FormQualification = (props: FormQualificationProps) => {
   const { onClickUpdate, qualification, utilityQualification } = props;
   const { control, handleSubmit } = useForm<RequestUpdateQualification>({
     defaultValues: {
